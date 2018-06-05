@@ -16,12 +16,13 @@ The methods are in the following order:
 
 1- Bisection Method;\
 2- Gauss Elimination Method;\
-3- Polynomial Interpolation Method;\
-4- Newton-Raphson Method;\
-5- False Position Method;\
-6- Secant Method;\
-7- 1/3 Simpson Method;\
-8- Trapezoidal Method.\
+3- Euler Method;\
+4- Polynomial Interpolation Method;\
+5- Newton-Raphson Method;\
+6- False Position Method;\
+7- Secant Method;\
+8- 1/3 Simpson Method;\
+9- Trapezoidal Method.
 
 The codes were made using portuguese language, any questions about how the codes works, you can contact me :)
 
