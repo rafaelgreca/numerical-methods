@@ -21,9 +21,11 @@ The methods are in the following order:
 5- Polynomial Interpolation Method;\
 6- Newton-Raphson Method;\
 7- False Position Method;\
-8- Secant Method;\
-9- 1/3 Simpson Method;\
-10- Trapezoidal Method.
+8- Runge Kutta Second Order;\
+9- Runge Kutta Forth Order;\
+9- Secant Method;\
+10- 1/3 Simpson Method;\
+11- Trapezoidal Method.
 
 The codes were made using portuguese language, any questions about how the codes works, you can contact me :)
 
