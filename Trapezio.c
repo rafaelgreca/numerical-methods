@@ -2,38 +2,38 @@
 #include <stdlib.h>
 #include <math.h>
 
-//CIC250 - C·lculo NumÈrico para ComputaÁ„o
-//ExercÌcio Pr·tico 10 - 16/05/18
+//CIC250 - C√°lculo Num√©rico para Computa√ß√£o
+//Exerc√≠cio Pr√°tico 10 - 16/05/18
 //2018000434 - Rafael Greca Vieira
-//IntegraÁ„o pelo mÈtodo dos trapÈzios
+//Integra√ß√£o pelo m√©todo dos trap√©zios
 
 double funcao(double x){
     double e = 2.71;
     //entre com a funcao
 
-    return pow(14,2*x);
+    return (1 - (pow(exp(1),-2*x)));
 }
 
 double integral(double x){
     double e = 2.71;
     //entre com a integral da funcao
 
-    return (480/pow(x,6));
+    return (x + (pow(exp(1),-2*x))/2);
 }
 
-double derivadaQuarta(double x){
+double integralSegunda(double x){
     double e = 2.71;
-    //entre com a derivada quarta da funcao
+    //entre com a integral segunda da funcao
 
-    return (pow(2,(2*x)+1) * 49 * log(14) * pow(log(196),3));
+    return ((pow(x,2))/2 - pow(exp(1),-2*x)/4);
 }
 
 double maior(double x[], int subintervalos){
     int i;
     double aux, maior = 0;
 
-    for(i=0; i<=2; i++){
-        aux = fabs(derivadaQuarta(x[i]));
+    for(i=0; i<subintervalos+1; i++){
+        aux = fabs(integralSegunda(x[i]));
 
         if(aux > maior){
             maior = aux;
@@ -53,7 +53,7 @@ int main()
     printf("Digite a quantidade de subintervalos: ");
     scanf(" %d",&subintervalos);
 
-    h = (b - a)/2;
+    h = (b - a)/subintervalos;
 
     printf("\nIntervalos que serao usados: \n");
 
@@ -78,24 +78,24 @@ int main()
     printf(" ------------------------------");
     printf("\n|   x          |           y   |\n");
     printf("-------------------------------\n");
-    for(i=0; i<=2; i++){
+    for(i=0; i<subintervalos+1; i++){
         printf("|%lf      |       %lf|\n",x[i],y[i]);
     }
     printf(" ------------------------------\n");
     printf("\n");
 
-    for(i=0; i<=2; i++){
+    for(i=0; i<subintervalos+1; i++){
         if(i == 0){
             it += y[i];
         }
 
-        if(i == 2){
+        if(i == subintervalos){
             it += y[i];
-            it = it * h/3;
+            it = it * h/2;
         }
 
-        if(i == 1){
-            it += 4 * y[i];
+        if(i > 0 && i < subintervalos){
+            it += 2 * y[i];
         }
 
     }
@@ -103,15 +103,12 @@ int main()
     printf("It = %lf\n\n",it);
 
 
-    max = maior(x,2);
+    max = maior(x,subintervalos);
 
-    printf("f'(x) em %lf eh: %.3lf\n",a,integral(a));
-    printf("f'(x) em %lf eh: %.3lf\n",b,integral(b));
+    printf("f''(x) em %lf eh: %.3lf\n",a,integralSegunda(a));
+    printf("f''(x) em %lf eh: %.3lf\n",b,integralSegunda(b));
 
-    printf("f''(x) em %lf eh: %.3lf\n",a,derivadaQuarta(a));
-    printf("f''(x) em %lf eh: %.3lf\n",b,derivadaQuarta(b));
-
-    error = (pow(h,5)/90) * max;
+    error = (pow(h,2)/12) * (b - a) * max;
     printf("Erro = %lf \n",error);
 
 }
