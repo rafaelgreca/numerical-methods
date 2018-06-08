@@ -21,9 +21,9 @@ double integral(double x){
     return (x + (pow(exp(1),-2*x))/2);
 }
 
-double integralSegunda(double x){
+double derivadaSegunda(double x){
     double e = 2.71;
-    //entre com a integral segunda da funcao
+    //entre com a derivada segunda da funcao
 
     return ((pow(x,2))/2 - pow(exp(1),-2*x)/4);
 }
@@ -33,7 +33,7 @@ double maior(double x[], int subintervalos){
     double aux, maior = 0;
 
     for(i=0; i<subintervalos+1; i++){
-        aux = fabs(integralSegunda(x[i]));
+        aux = fabs(derivadaSegunda(x[i]));
 
         if(aux > maior){
             maior = aux;
@@ -105,8 +105,8 @@ int main()
 
     max = maior(x,subintervalos);
 
-    printf("f''(x) em %lf eh: %.3lf\n",a,integralSegunda(a));
-    printf("f''(x) em %lf eh: %.3lf\n",b,integralSegunda(b));
+    printf("f''(x) em %lf eh: %.3lf\n",a,derivadaSegunda(a));
+    printf("f''(x) em %lf eh: %.3lf\n",b,derivadaSegunda(b));
 
     error = (pow(h,2)/12) * (b - a) * max;
     printf("Erro = %lf \n",error);
